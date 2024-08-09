@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ project.name }}</title>
+</head>
+<body>
+    <h1>{{ project.name }}</h1>
+    <ul>
+        {% for todo in todos %}
+            <li>
+                {{ todo.title }} - {% if todo.completed %}Completed{% else %}Pending{% endif %}
+                <a href="{% url 'edit_todo' todo.pk %}">Edit</a>
+                <a href="{% url 'mark_complete' todo.pk %}">Mark as Complete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_todo' project.pk %}">Add Todo</a>
+    <a href="{% url 'project_list' %}">Back to Projects</a>
+</body>
+</html>
